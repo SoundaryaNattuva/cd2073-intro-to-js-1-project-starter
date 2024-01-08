@@ -161,23 +161,22 @@ function emptyCart(){
 
 let totalPaid = 0;
 
-function pay(amount) {
-  totalPaid += amount;
-  let remainingBalance = totalPaid - cartTotal();
-  return remainingBalance;
-}
-
 // function pay(amount) {
 //   totalPaid += amount;
-//   let remainingBalance = totalPaid - cartTotal();
-//   if (remainingBalance === 0){
-//     console.log("equal to 0")
-//     totalPaid = 0
-//   } else if (remainingBalance < 0){
-//     emptyCart()
-//   }
-//     return remainingBalance
+//   let remaining = totalPaid - cartTotal();
+//   return remaining;
 // }
+
+function pay(amount) {
+  totalPaid += amount;
+  let remaining = totalPaid - cartTotal();
+  if (remaining >= 0){
+    totalPaid = 0
+    emptyCart ()
+  } else {
+    return remainingBalance
+  }
+}
 
 
 
