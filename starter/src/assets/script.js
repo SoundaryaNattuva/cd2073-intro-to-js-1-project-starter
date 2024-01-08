@@ -150,11 +150,26 @@ function emptyCart(){
   Hint: cartTotal function gives us cost of all the products in the cart  
 */
 
-function pay(amount){
-  let totalCost = cartTotal()
-  let balance = amount - totalCost
-  return balance
-}
+let totalPaid = 0;
+
+function pay(amount) {
+ totalPaid += amount;
+ let remainingBalance = totalPaid - cartTotal();
+ return remainingBalance; 
+ }
+
+
+// let totalPaid = 0;
+
+// function pay(amount) {
+//  totalPaid += amount;
+//  let remainingBalance = totalPaid - cartTotal();
+//  if (remainingBalance === 0){
+//   console.log("equal to 0")
+//   emptyCart()
+//  }
+//  return remainingBalance
+// }
 
 
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)
