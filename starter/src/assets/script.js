@@ -150,26 +150,35 @@ function emptyCart(){
   Hint: cartTotal function gives us cost of all the products in the cart  
 */
 
-let totalPaid = 0;
-
-function pay(amount) {
- totalPaid += amount;
- let remainingBalance = totalPaid - cartTotal();
- return remainingBalance; 
- }
-
-
 // let totalPaid = 0;
 
 // function pay(amount) {
 //  totalPaid += amount;
 //  let remainingBalance = totalPaid - cartTotal();
-//  if (remainingBalance === 0){
-//   console.log("equal to 0")
-//   emptyCart()
+//  return remainingBalance; 
 //  }
-//  return remainingBalance
+
+
+let totalPaid = 0;
+
+function pay(amount) {
+  totalPaid += amount;
+  let remainingBalance = totalPaid - cartTotal();
+  return remainingBalance;
+}
+
+// function pay(amount) {
+//   totalPaid += amount;
+//   let remainingBalance = totalPaid - cartTotal();
+//   if (remainingBalance === 0){
+//     console.log("equal to 0")
+//     totalPaid = 0
+//   } else if (remainingBalance < 0){
+//     emptyCart()
+//   }
+//     return remainingBalance
 // }
+
 
 
 /* Place stand out suggestions here (stand out suggestions can be found at the bottom of the project rubric.)
