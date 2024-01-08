@@ -53,12 +53,11 @@ const cart = []
   - if the product is not already in the cart, add it to the cart
 */
 
-function addProductToCart (productOfInterest){
-  let productOfInterestId = ''
+function addProductToCart (productId){
   for (let i=0; i<products.length; i++){
-    if (products[i].productId === productOfInterest){
+    if (products[i].productId === productId){
       products[i].quantity += 1
-      if (cart.includes(products[i].name) === false){
+      if (!cart.includes(products[i])){
         cart.push(products[i])
       }
     }
@@ -72,9 +71,8 @@ function addProductToCart (productOfInterest){
 */
 
 function increaseQuantity(productId){
-  let productOfInterestId = ''
   for (let i=0; i<products.length; i++){
-    if (products[i].productId === productOfInterest){
+    if (products[i].productId === productId){
       products[i].quantity += 1
     }
   }
@@ -88,24 +86,18 @@ function increaseQuantity(productId){
 */
 
 function decreaseQuantity(productId){
-  let productOfInterestId = ''
   for (let i=0; i<products.length; i++){
     if (products[i].productId === productId){
-      products[i].quantity -= 1
-      console.log(products[i].quantity)
-      if (products[i].quantity === 0){
-        let removeItem = ''
-        removeItem = cart.indexOf(products[i].name)
+      if (products[i].quantity === 1){
+        products[i].quantity -= 1
+        let removeItem = cart.findIndex(item => item.name === products[i].name);
         cart.splice(removeItem, 1)
+      } else if (products[i].quantity > 1){
+        products[i].quantity -= 1
       }
     }
   }
 }
-
-// decreaseQuantity(2304)
-// console.log(cart)
-
-
 
 /* Create a function named removeProductFromCart that takes in the productId as an argument
   - removeProductFromCart should get the correct product based on the productId
@@ -117,15 +109,11 @@ function removeProductFromCart(productId){
   for (let i=0; i<products.length; i++){
     if (products[i].productId === productId){
       products[i].quantity === 0
-      let removeItem = ''
-      removeItem = cart.indexOf(products[i].name)
+      let removeItem = cart.indexOf(products[i])
       cart.splice(removeItem, 1)
     }
   }
 }
-
-// decreaseQuantity(2304)
-// console.log(cart, products[4].quantity)
 
 
 /* Create a function named cartTotal that has no parameters
@@ -138,7 +126,7 @@ function cartTotal(){
   let totalCost = 0
   cart.forEach((item) => {
     for (let i=0; i<products.length; i++){
-      if (products[i].name === item){
+      if (products[i] === item){
         let total = products[i].quantity * products[i].price
         totalCost += total
       }
