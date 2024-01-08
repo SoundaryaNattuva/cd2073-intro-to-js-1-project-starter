@@ -59,7 +59,7 @@ function addProductToCart (productOfInterest){
     if (products[i].productId === productOfInterest){
       products[i].quantity += 1
       if (cart.includes(products[i].name) === false){
-        cart.push(products[i].name)
+        cart.push(products[i])
       }
     }
   }
